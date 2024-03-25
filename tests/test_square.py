@@ -6,7 +6,11 @@ import pytest
 from src.triangle import Triangle
 
 
-@pytest.mark.parametrize(("side_a", "area", "perimeter"), [(0, 0, 0), (-3, 9, -12)])
+@pytest.mark.parametrize(("side_a", "area", "perimeter"), [(0, 0, 0), (-3, 9, -12)],
+                         ids=["The length of side is equal to zero",
+                              "The length of side is less than zero"
+                              ]
+                         )
 def test_square_negative(side_a, area, perimeter):
     with pytest.raises(ValueError):
         r = Square(side_a)

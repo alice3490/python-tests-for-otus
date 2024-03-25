@@ -6,7 +6,10 @@ import pytest
 
 
 @pytest.mark.parametrize(("side_a", "side_b", "side_c", "area", "perimeter"), [(2, 1, 4, 1, 5), (0, 0, 0, 0, 0),
-                                                                               (-1, -2, -1, 1, -4)])
+                                                                               (-1, -2, -1, 1, -4)],
+                         ids=["The sum of the length of two sides is less than the third side",
+                              "The length of all sides is equal to zero",
+                              "The length of all sides is less than zero"])
 def test_triangle_negative(side_a, side_b, side_c, area, perimeter):
     with pytest.raises(ValueError):
         r = Triangle(side_a, side_b, side_c)

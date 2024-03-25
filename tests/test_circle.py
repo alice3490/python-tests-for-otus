@@ -5,7 +5,9 @@ from src.square import Square
 from src.triangle import Triangle
 
 
-@pytest.mark.parametrize(("radius", "area", "length"), [(0, 0, 0), (-1, 1, 1)])
+@pytest.mark.parametrize(("radius", "area", "length"), [(0, 0, 0), (-1, 1, 1)],
+                         ids=["Radius is equal to zero",
+                              "Radius is less than zero"])
 def test_circle_negative(radius, area, length):
     with pytest.raises(ValueError):
         c = Circle(radius)

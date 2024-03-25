@@ -6,7 +6,11 @@ from src.square import Square
 from src.triangle import Triangle
 
 
-@pytest.mark.parametrize(("side_a", "side_b", "area", "perimeter"), [(-3, -5, 15, 16), (0, 0, 0, 0)])
+@pytest.mark.parametrize(("side_a", "side_b", "area", "perimeter"), [(-3, -5, 15, 16), (0, 0, 0, 0)],
+                         ids=["The length of sides is less than zero",
+                              "The length of sides is equal to zero",
+                              ]
+                         )
 def test_rectangle_negative(side_a, side_b, area, perimeter):
     with pytest.raises(ValueError):
         r = Rectangle(side_a, side_b)
