@@ -20,7 +20,6 @@ def get_users_from_json_file(file_name: str):
         users_list = []
     for user in users:
         data = {key: value for key, value in user.items() if key in users_keys}
-        data = {key: data.pop(key) for key in users_keys}
         users_list.append(data)
     return users_list
 
