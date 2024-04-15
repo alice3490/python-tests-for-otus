@@ -20,18 +20,18 @@ class JsonPlaceholderClient:
         response = self.session.get(url=f"{self.base_url}/posts")
         return response
 
-    def create_resource(self, query):
-        response = self.session.post(url=f"{self.base_url}/posts", params=query)
+    def create_resource(self, json):
+        response = self.session.post(url=f"{self.base_url}/posts", json=json)
         return response
 
-    def update_resource(self, id, query):
-        response = self.session.put(url=f"{self.base_url}/posts/{id}", params=query)
+    def update_resource(self, json, id):
+        response = self.session.put(url=f"{self.base_url}/posts/{id}", json=json)
         return response
 
-    def patch_resource(self, id, query):
-        response = self.session.get(url=f"{self.base_url}/posts/{id}", params=query)
+    def patch_resource(self, id, json):
+        response = self.session.get(url=f"{self.base_url}/posts/{id}", json=json)
         return response
 
     def delete_resource(self, id):
-        response = self.session.get(url=f"{self.base_url}/posts/{id}", params={"method": "DELETE"})
+        response = self.session.get(url=f"{self.base_url}/posts/{id}", json={"method": "DELETE"})
         return response

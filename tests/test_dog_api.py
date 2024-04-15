@@ -2,7 +2,12 @@ import pytest
 from schemas.dog_api_schemas import list_all_breeds_schema, by_sub_breed_list_schema
 from jsonschema import validate
 
-from type_checkers import check_type_for_get_random_image
+from pydantic import BaseModel
+
+
+class RandomImage(BaseModel):
+    message: list
+    status: str
 
 
 class TestDogApi:
@@ -17,6 +22,7 @@ class TestDogApi:
         response = dog_api_client.random_image(count=count)
         assert response.status_code == 200
         json_response = response.json()
+        RandomImage.parse_obj(json_response)
         if count > 50:
             assert len(json_response.get("message")) == 50
         elif count == 0:
